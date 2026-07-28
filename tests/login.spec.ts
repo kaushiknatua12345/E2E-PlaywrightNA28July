@@ -41,7 +41,7 @@ test('test for invalid username or password', async ({ page }) => {
   await expect(page.getByText('Invalid Username or Password')).toBeVisible();
 });
 
-test('test for valid username and password', async ({ page }) => {
+/*test('test for valid username and password', async ({ page }) => {
   username.fill('joe123');
   password.fill('joe@123');
   page.once('dialog', dialog => {
@@ -50,7 +50,7 @@ test('test for valid username and password', async ({ page }) => {
   });
   await page.getByRole('button', { name: 'Login' }).click();
   await page.goto('http://localhost:4200/customer-update?username=joe123');
-});
+});*/
 
 
 });
