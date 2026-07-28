@@ -28,15 +28,20 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
+      - name: Start JSON Server (backend API)
+        run: npm run json-server &
+        env:
+          CI: true
+
       - name: Start Angular dev server
         run: npx ng serve --port 4200 &
         env:
           CI: true
 
-      - name: Wait for Angular server to be ready
+      - name: Wait for both servers to be ready
         run: |
-          echo "Waiting for Angular dev server..."
-          npx wait-on http://localhost:4200 --timeout 120000
+          echo "Waiting for JSON Server and Angular dev server..."
+          npx wait-on http://localhost:3000/users http://localhost:4200 --timeout 120000
         env:
           CI: true
 
