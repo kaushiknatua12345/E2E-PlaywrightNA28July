@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": "f8dd",
+      "firstName": "Sam",
+      "lastName": "Ramsey",
+      "username": "sam123",
+      "password": "sam@123",
+      "email": "sam@xyz.com",
+      "phone": 123456,
+      "dateofBirth": "1987/03/06"
+    },
+    {
+      "firstName": "Joe",
+      "lastName": "Little",
+      "username": "joe123",
+      "password": "joe@123",
+      "email": "joe@xyz.com",
+      "phone": 654789,
+      "dateofBirth": "1980-02-12",
+      "id": "f9xz"
+    },
+    {
+      "id": "e31b",
+      "username": "merry123",
+      "password": "merry@123",
+      "firstName": "Merry",
+      "lastName": "Kim",
+      "email": "merry@xyz.com",
+      "phone": 741258,
+      "dateofBirth": "1991-07-20"
+    },
+    {
+      "id": "4e1f",
+      "firstName": "Tommy",
+      "lastName": "Singh",
+      "username": "tommy123",
+      "password": "tommy@123",
+      "email": "tommy@xyz.com",
+      "phone": 852147,
+      "dateofBirth": "2019-01-29"
+    }
+  ]
+}
