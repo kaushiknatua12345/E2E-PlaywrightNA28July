@@ -1,14 +1,22 @@
 import {test,expect} from '@playwright/test';
+import {ReuseableElements} from '../src/Pages/ReuseableElements';
 
 test.describe('Login Page Tests', () => {
 
 let username:any;
 let password:any;
 let loginButton:any;    
+let resuseableElements: ReuseableElements;
 
 /* create a beforeach test hook to run before each test case*/
 test.beforeEach(async ({page}) => {
     await page.goto('http://localhost:4200/login');
+    resuseableElements = new ReuseableElements(page);
+    await resuseableElements.verifyHeaderText();
+    await resuseableElements.clickHomeLink();
+    await resuseableElements.clickLoginLink();    
+    await resuseableElements.verifyFooterText();
+
     username = page.getByPlaceholder('Enter your username');
     password = page.getByPlaceholder('Enter your password');
     loginButton = page.getByRole('button', { name: 'Login' });
@@ -41,7 +49,7 @@ test('test for invalid username or password', async ({ page }) => {
   await expect(page.getByText('Invalid Username or Password')).toBeVisible();
 });
 
-/*test('test for valid username and password', async ({ page }) => {
+test('test for valid username and password', async ({ page }) => {
   username.fill('joe123');
   password.fill('joe@123');
   page.once('dialog', dialog => {
@@ -50,7 +58,7 @@ test('test for invalid username or password', async ({ page }) => {
   });
   await page.getByRole('button', { name: 'Login' }).click();
   await page.goto('http://localhost:4200/customer-update?username=joe123');
-});*/
+});
 
 
 });
