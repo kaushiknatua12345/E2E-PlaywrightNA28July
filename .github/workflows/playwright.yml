@@ -29,12 +29,12 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Start JSON Server (backend API)
-        run: npm run json-server &
+        run: nohup npx json-server src/app/userdb.json --port 3000 > /tmp/json-server.log 2>&1 &
         env:
           CI: true
 
       - name: Start Angular dev server
-        run: npx ng serve --port 4200 &
+        run: nohup npx ng serve --port 4200 > /tmp/ng-serve.log 2>&1 &
         env:
           CI: true
 
@@ -42,6 +42,7 @@ jobs:
         run: |
           echo "Waiting for JSON Server and Angular dev server..."
           npx wait-on http://localhost:3000/users http://localhost:4200 --timeout 120000
+          echo "Both servers are up!"
         env:
           CI: true
 
